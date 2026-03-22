@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reyhaneh Kharazmi Pour — Optimization & Operations Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1a18;
+      --muted: #6b6860;
+      --accent: #2c4a7c;
+      --accent-light: #e8edf5;
+      --rule: #dedad2;
+      --max: 760px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .photo-wrap {
+      flex-shrink: 0;
+    }
+
+    .photo-wrap img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--rule);
+      display: block;
+    }
+
+    .header-text { flex: 1; }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      font-size: 13px;
+      color: var(--muted);
+      align-items: center;
+    }
+
+    .contact-row a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .contact-row a:hover { border-color: var(--accent); }
+
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--accent);
+      color: white !important;
+      font-size: 12px !important;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border-bottom: none !important;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .cv-btn:hover { opacity: .85; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    nav ul {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      height: 48px;
+      align-items: center;
+      overflow-x: auto;
+    }
+
+    nav a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* ── MAIN ── */
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    section { padding-top: 60px; }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-size: 1.02rem;
+      color: var(--ink);
+      max-width: 620px;
+    }
+
+    /* ── RESEARCH ── */
+    .research-item {
+      margin-bottom: 22px;
+      padding: 20px 22px;
+      background: white;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+    }
+
+    .research-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .research-meta {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .research-desc { font-size: 14px; color: var(--muted); }
+
+    /* ── EDUCATION ── */
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 20px;
+      margin-bottom: 34px;
+    }
+
+    .entry-org {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .entry-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .entry-sub {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .entry-date {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 560px) { .projects-grid { grid-template-columns: 1fr; } }
+
+    .project-card {
+      padding: 20px;
+      background: white;
+      border: 1px solid var(--rule);
+      transition: border-color .2s;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .project-card:hover { border-color: var(--accent); }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      border-left: 3px solid var(--accent);
+    }
+
+    .project-type {
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .project-desc { font-size: 13px; color: var(--muted); }
+
+    .project-collab {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      border-top: 1px solid var(--rule);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 500px) {
+      .header-inner { flex-direction: column; align-items: center; text-align: center; }
+      .contact-row { justify-content: center; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header { animation: fadeUp .5s ease both; }
+    section { animation: fadeUp .5s ease both; }
+    section:nth-of-type(2) { animation-delay: .05s; }
+    section:nth-of-type(3) { animation-delay: .10s; }
+    section:nth-of-type(4) { animation-delay: .15s; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <!-- ① PHOTO: upload a file named "photo.jpg" to your repo, it will appear here -->
+    <div class="photo-wrap">
+      <img src="photo.jpg" alt="Reyhaneh Kharazmi Pour"
+           onerror="this.style.display='none'"/>
+    </div>
+
+    <div class="header-text">
+      <p class="eyebrow">PhD Researcher · UC Irvine</p>
+      <h1>Reyhaneh (Rey)<br>Kharazmi Pour</h1>
+      <p class="tagline">
+        PhD student in Operations Management specializing in optimization, algorithmic
+        decision-making, and network optimization — with hands-on experience applying
+        ML and data science to real-world problems.
+      </p>
+      <div class="contact-row">
+        <span>📍 Irvine, CA</span>
+        <span>✉ <a href="mailto:Reyhanekhpr@gmail.com">Reyhanekhpr@gmail.com</a></span>
+        <span>🔗 <a href="https://linkedin.com/in/Reyhane-Kharazmi" target="_blank">LinkedIn</a></span>
+        <span>💻 <a href="https://github.com/reyhanekhp" target="_blank">GitHub</a></span>
+        <!-- ② CV download: upload your PDF named "cv.pdf" to your repo -->
+        <a class="cv-btn" href="cv.pdf" download>⬇ Download CV</a>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="about-text">
+      I am a PhD student in Operations, Decisions, and Technology Management at the
+      University of California, Irvine (GPA 4.0), working with Professors John Turner
+      and Luyi Gui. My research spans online optimization, network cost spillovers, and
+      algorithmic decision-making under uncertainty. Before UCI, I worked as a Business
+      Data Analyst at Digikala — Iran's largest e-commerce platform — leading A/B testing,
+      customer segmentation, and fraud detection initiatives. I hold a B.Sc. in Industrial
+      Engineering from Sharif University of Technology, where I was a National Olympiad
+      bronze medalist in Astronomy &amp; Astrophysics.
+    </p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+
+    <div class="research-item">
+      <div class="research-meta">Ongoing · Prof. John Turner</div>
+      <div class="research-title">Learning to Monetize Influence: Online Ad Allocation with Edge-Aware Dual Mirror Descent</div>
+      <p class="research-desc">
+        Developing online algorithms for display ad assignment in social networks,
+        leveraging edge-aware dual mirror descent for near-optimal allocation under
+        budget constraints.
+      </p>
+    </div>
+
+    <div class="research-item">
+      <div class="research-meta">Ongoing · Prof. Luyi Gui</div>
+      <div class="research-title">Regulating Farmland Abandonment under Network Cost Spillovers</div>
+      <p class="research-desc">
+        Studies farmland abandonment in agricultural markets with network cost spillovers,
+        analyzing how penalty-based and subsidy-based policies influence farmers'
+        participation and production decisions.
+      </p>
+    </div>
+
+    <div class="research-item">
+      <div class="research-meta">2022 · Prof. Erfan HassanNayebi</div>
+      <div class="research-title">Optimal Paid Referral Marketing</div>
+      <p class="research-desc">
+        Designed an agent-based simulation and optimization framework to plan referral
+        marketing campaigns that maximize user acquisition under a fixed budget.
+        B.Sc. thesis at Sharif University of Technology.
+      </p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="entry">
+      <div>
+        <div class="entry-org">University of California, Irvine</div>
+        <div class="entry-title">PhD — Operations, Decisions, and Technology Management</div>
+        <div class="entry-sub">GPA 4.0 · University Fellowship 2023–2028 · Graduate Dean's Recruitment Fellowship</div>
+      </div>
+      <div class="entry-date">2023 – Present</div>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-org">Sharif University of Technology</div>
+        <div class="entry-title">B.Sc. — Industrial Engineering</div>
+        <div class="entry-sub">GPA 4.0 (last 2 years) · Thesis: Optimal Referral Marketing with Simulation-Optimization</div>
+      </div>
+      <div class="entry-date">2017 – 2022</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Selected Projects</h2>
+    <div class="projects-grid">
+
+      <a class="project-card featured" href="https://github.com/toxiclassify" target="_blank">
+        <div class="project-type">NLP · Deep Learning · Research</div>
+        <div class="project-name">ToxiClassify — Toxic Comment Classification</div>
+        <p class="project-desc">
+          Multi-label toxicity detection on Wikipedia talk page comments. Explored the full model
+          spectrum — from classical baselines (Logistic Regression, SVM) to CNNs and transformer-based
+          architectures — with deep dataset analysis and fully reproducible experiments.
+        </p>
+        <p class="project-collab">With Helia Mirsoofian &amp; Iman Mohammadi</p>
+        <span class="project-link">View on GitHub →</span>
+      </a>
+
+      <div class="project-card">
+        <div class="project-type">ML & Data Analysis</div>
+        <div class="project-name">Traffic Accident Severity Prediction</div>
+        <p class="project-desc">Classification pipeline on 100k+ records comparing Logistic Regression, Random Forest, XGBoost, MLP, and Neural Networks.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Network Analysis</div>
+        <div class="project-name">Influencer Optimization via Network Centrality</div>
+        <p class="project-desc">Identified key influencers using degree/closeness centrality; simulated budget-constrained seeding strategies.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Marketing Analytics</div>
+        <div class="project-name">Churn Prediction & Segmentation</div>
+        <p class="project-desc">Customer lifecycle analysis with RFM clustering and logistic regression to surface churn-prone segments.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Data Mining</div>
+        <div class="project-name">Airbnb Price Prediction</div>
+        <p class="project-desc">Feature engineering on scraped listings; Ridge, Linear, and Decision Tree regressors tuned with GridSearchCV.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Transportation Optimization</div>
+        <div class="project-name">Truck Scheduling Model</div>
+        <p class="project-desc">MILP model for truck sequencing in a cross-dock facility with capacity and precedence constraints; solved with Gurobi.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Modeling & Simulation</div>
+        <div class="project-name">Multi-Stage Factory Simulation</div>
+        <p class="project-desc">Discrete-event simulation of a production line to identify throughput bottlenecks under varying resource allocations.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Reyhaneh (Rey) Kharazmi Pour · PhD Student, UC Irvine</span>
+  <span><a href="mailto:Reyhanekhpr@gmail.com">Reyhanekhpr@gmail.com</a></span>
+</footer>
+
+</body>
+</html>
